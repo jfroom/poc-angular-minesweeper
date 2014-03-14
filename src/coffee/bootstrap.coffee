@@ -8,7 +8,10 @@ require.config
     angularSanitize: "../bower_components/angular-sanitize/angular-sanitize"
     angularResource: "../bower_components/angular-resource/angular-resource"
     angularMocks: "../bower_components/angular-mocks/angular-mocks"
+    loglevel: "../bower_components/loglevel/dist/loglevel"
     text: "../bower_components/requirejs-text/text"
+    domReady: "../bower_components/requirejs-domready/domReady"
+    "_": "../bower_components/lodash/dist/lodash"
 
   shim:
     angular:
@@ -24,29 +27,6 @@ require.config
 
   priority: ["angular"]
 
-###
-  paths:
-    angular: "../bower_components/angular/angular"
-    angularRoute: "../bower_components/angular-route/angular-route"
-    angularCookies: "../bower_components/angular-cookies/angular-cookies"
-    angularSanitize: "../bower_components/angular-sanitize/angular-sanitize"
-    angularResource: "../bower_components/angular-resource/angular-resource"
-    angularMocks: "../bower_components/angular-mocks/angular-mocks"
-    text: "../bower_components/requirejs-text/text"
-
-  shim:
-    angular:
-      exports: "angular"
-
-    angularRoute: ["angular"]
-    angularCookies: ["angular"]
-    angularSanitize: ["angular"]
-    angularResource: ["angular"]
-    angularMocks:
-      deps: ["angular"]
-      exports: "angular.mock"
-###
-
 #http://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap
 window.name = "NG_DEFER_BOOTSTRAP!"
 require [
@@ -56,15 +36,12 @@ require [
   "angularCookies"
   "angularSanitize"
   "angularResource"
-], (angular, app, ngRoutes, ngCookies, ngSanitize, ngResource) ->
-  "use strict"
+  "text"
+  "domReady"
+], (angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, text, domReady) ->
 
-  # jshint ignore:start
   $html = angular.element(document.getElementsByTagName("html")[0])
 
-  # jshint ignore:end
   angular.element().ready ->
     angular.resumeBootstrap [app.name]
-    return
 
-  return

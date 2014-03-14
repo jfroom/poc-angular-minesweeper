@@ -9,22 +9,42 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/sass-bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
+    <!-- GOOGLE FONTS
+    http://www.google.com/fonts/#UsePlace:use/Collection:Open+Sans:400italic,700italic,400,700|Roboto+Slab:400,300
+    -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
+
   </head>
-  <body ng-app="pocAngularMinesweeperApp">
+  <body ng-app="App">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Minesweeper</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://github.com/jfroom/poc-angular-minesweeper" ><small><i class="fa fa-lg fa-github"></i> Source</small></a></li>
+        </ul>
+
+      </div><!-- /.container-fluid -->
+    </nav>
+
     <!-- Add your site or application content here -->
-    <div class="container" ng-view></div>
+    <section role="main" class="container" ng-view>
+      <div class="loading-wrap">
+        <div class="loading">
+          <p>Loading...</p>
+        </div>
+      </div>
+    </section>
 
 
 

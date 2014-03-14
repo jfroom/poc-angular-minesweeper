@@ -15,6 +15,13 @@
   },
   "devDependencies": {
     "angular-mocks": "1.2.11",
-    "angular-scenario": "1.2.11"
+    "angular-scenario": "1.2.11",
+    "font-awesome": "~4.0.3",
+    "solarized": "~0.1.2",
+    "requirejs-domready": "~2.0.1",
+    "requirejs-text": "~2.0.10",
+    "lodash": "~2.4.1",
+    "log4javascript": "~1.4.6",
+    "loglevel": "~0.5.0"
   }
 }

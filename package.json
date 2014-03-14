@@ -37,7 +37,8 @@
     "requirejs": "^2.1.11",
     "karma-requirejs": "^0.2.1",
     "karma-phantomjs-launcher": "^0.1.2",
-    "karma-coffee-preprocessor": "^0.2.1"
+    "karma-coffee-preprocessor": "^0.2.1",
+    "grunt-sass": "^0.11.0"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -28,8 +28,10 @@ module.exports = (grunt) ->
     # Watches files for changes and runs tasks based on the changed files
     watch:
       coffee:
-        files: ['<%= yeoman.app %>/scripts/{,**/}*.coffee']
+        files: ['src/coffee/{,**/}*.coffee']
         tasks: ['coffee:dist']
+        options:
+          livereload: true
 
       js:
         files: ["<%= yeoman.app %>/scripts/{,*/}*.js"]
@@ -45,14 +47,20 @@ module.exports = (grunt) ->
         ]
 
       compass:
-        files: ["<%= yeoman.app %>/styles/{,*/}*.{scss,sass}"]
+        files: ["src/sass/{,*/}*.{scss,sass}"]
         tasks: [
           "compass:server"
           "autoprefixer"
         ]
+      sass:
+        files: ["src/sass/{,*/}*.{scss,sass}"]
+        tasks: [
+          "sass:dev"
+          "autoprefixer"
+        ]
 
       gruntfile:
-        files: ["Gruntfile.js"]
+        files: ["Gruntfile.coffee"]
 
       livereload:
         options:
@@ -166,7 +174,7 @@ module.exports = (grunt) ->
         cssDir: ".tmp/styles"
         generatedImagesDir: ".tmp/images/generated"
         imagesDir: "<%= yeoman.app %>/images"
-        #javascriptsDir: "<%= yeoman.app %>/scripts"
+        javascriptsDir: ".tmp-dist/scripts"
         fontsDir: "<%= yeoman.app %>/styles/fonts"
         importPath: "<%= yeoman.app %>/bower_components"
         httpImagesPath: "/images"
@@ -183,6 +191,18 @@ module.exports = (grunt) ->
       server:
         options:
           debugInfo: true
+
+    sass:
+      dev:
+        options:
+          sourcemaps: true
+        files:
+          '.tmp/styles/main.css': 'src/sass/main.scss'
+      dist:
+        options:
+          sourcemaps: false
+        files:
+          '.tmp/styles/main.css': 'src/sass/main.scss'
 
 
     # Renames files for browser caching purposes
@@ -296,6 +316,13 @@ module.exports = (grunt) ->
             dest: "<%= yeoman.dist %>/images"
             src: ["generated/*"]
           }
+
+          {
+            expand: true
+            cwd: "<%= yeoman.app %>/bower_components/font-awesome/fonts"
+            dest: "<%= yeoman.dist %>/bower_components/font-awesome/fonts"
+            src: ["**"]
+          }
         ]
 
       styles:
@@ -307,10 +334,17 @@ module.exports = (grunt) ->
 
     # Run some tasks in parallel to speed up the build process
     concurrent:
-      server: ["compass:server"]
-      test: ["compass"]
+      server: [
+        #"compass:server"
+        "sass:dev"
+      ]
+      test: [
+        #"compass"
+        "sass:dev"
+      ]
       dist: [
-        "compass:dist"
+        #"compass:dist"
+        "sass:dist"
         "imagemin"
         "svgmin"
       ]
@@ -403,7 +437,7 @@ module.exports = (grunt) ->
       "clean:server"
       "bower-install"
       "concurrent:server"
-      "autoprefixer"
+      #"autoprefixer"
       "coffee:dist"
       "connect:livereload"
       "watch"
@@ -418,7 +452,7 @@ module.exports = (grunt) ->
   grunt.registerTask "test", [
     "clean:server"
     "concurrent:test"
-    "autoprefixer"
+    #"autoprefixer"
     "coffee:dist"
     "connect:test"
     "karma"
@@ -428,7 +462,7 @@ module.exports = (grunt) ->
     "bower-install"
     "useminPrepare"
     "concurrent:dist"
-    "autoprefixer"
+    #"autoprefixer"
     "concat"
     "ngmin"
     "copy:dist"
@@ -442,6 +476,7 @@ module.exports = (grunt) ->
     "requirejs"
     "uglify:dist"
     "htmlmin"
+
   ]
   grunt.registerTask "default", [
     "newer:jshint"
