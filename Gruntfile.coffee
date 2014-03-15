@@ -143,6 +143,24 @@ module.exports = (grunt) ->
           ]
         ]
 
+      distFinal:
+
+        files: [
+          dot: true
+          src: [
+            "<%= yeoman.dist %>/bower_components/*"
+            "!<%= yeoman.dist %>/bower_components/font-awesome/**"
+            "<%= yeoman.dist %>/bower_components/font-awesome/*"
+            "!<%= yeoman.dist %>/bower_components/font-awesome/fonts"
+            "!<%= yeoman.dist %>/bower_components/requirejs/**"
+            "<%= yeoman.dist %>/bower_components/requirejs/*"
+            "!<%= yeoman.dist %>/bower_components/requirejs/*.js"
+
+          ]
+          #filter: 'isDirectory'
+        ]
+
+
       server: ".tmp"
 
 
@@ -305,6 +323,7 @@ module.exports = (grunt) ->
               "*.html"
               "views/{,*/}*.html"
               "bower_components/**/*"
+              #"bower_components/font-awesome/fonts/*"
               "images/{,*/}*.{webp}"
               "fonts/*"
             ]
@@ -317,11 +336,21 @@ module.exports = (grunt) ->
             src: ["generated/*"]
           }
 
+
+        ]
+      distFinal:
+        files: [
           {
             expand: true
             cwd: "<%= yeoman.app %>/bower_components/font-awesome/fonts"
             dest: "<%= yeoman.dist %>/bower_components/font-awesome/fonts"
             src: ["**"]
+          }
+          {
+            expand: true
+            cwd: "<%= yeoman.app %>/bower_components/requirejs"
+            dest: "<%= yeoman.dist %>/bower_components/requirejs"
+            src: ["*.js"]
           }
         ]
 
@@ -366,12 +395,21 @@ module.exports = (grunt) ->
 
     uglify:
       dist:
-       files:[{
-          expand: true,
-          cwd: '<%= yeoman.dist %>/scripts',
-          src: '**/*.js',
-          dest: '<%= yeoman.dist %>/scripts'
-        }]
+       files:
+        [
+          {
+            expand: true,
+            cwd: '<%= yeoman.dist %>/scripts',
+            src: '**/*.js',
+            dest: '<%= yeoman.dist %>/scripts'
+          }
+          {
+            expand: true,
+            cwd: '<%= yeoman.dist %>/bower_components',
+            src: '**/*.js',
+            dest: '<%= yeoman.dist %>/bower_components'
+          }
+        ]
 
 
 
@@ -392,6 +430,7 @@ module.exports = (grunt) ->
           baseUrl: "scripts/"
           appDir: './.tmp-dist'
           dir: './<%= yeoman.dist %>'
+          #dir: './.tmp-dist'
           wrap:true
           removeCombined: true
           keepBuildDir: true
@@ -474,8 +513,11 @@ module.exports = (grunt) ->
     "usemin"
 
     "requirejs"
+    "clean:distFinal"
+    "copy:distFinal"
     "uglify:dist"
     "htmlmin"
+
 
   ]
   grunt.registerTask "default", [
