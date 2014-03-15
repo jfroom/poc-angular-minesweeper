@@ -1,7 +1,10 @@
-#jshint unused: vars
 define [ #deps
 #invoke
   "angular"
+  "angularCookies"
+  "angularSanitize"
+  "angularResource"
+  "angularRoute"
   "controllers/main"
   "directives/gameTile"
   "directives/hud"
@@ -14,7 +17,7 @@ define [ #deps
     "app.directives.gameTile"
     "app.directives.hud"
     "app.services.log"
-    "ngCookies"
+    #"ngCookies"
     "ngResource"
     "ngSanitize"
     "ngRoute"

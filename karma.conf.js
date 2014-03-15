@@ -33,6 +33,8 @@ module.exports = function(config) {
       {pattern: 'app/bower_components/angular-cookies/angular-cookies.js', included: false },
       {pattern: 'app/bower_components/angular-sanitize/angular-sanitize.js', included: false },
       {pattern: 'app/bower_components/angular-route/angular-route.js', included: false },
+      {pattern: 'app/bower_components/lodash/dist/lodash.js', included: false },
+      {pattern: 'app/bower_components/loglevel/dist/loglevel.js', included: false },
       {pattern: '.tmp-dist/scripts/*.js', included: false },
       {pattern: '.tmp-dist/scripts/**/*.js', included: false },
 

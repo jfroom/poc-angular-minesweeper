@@ -19,6 +19,10 @@ requirejs.config({
         angularSanitize: '../../app/bower_components/angular-sanitize/angular-sanitize',
         angularResource: '../../app/bower_components/angular-resource/angular-resource',
         angularMocks: '../../app/bower_components/angular-mocks/angular-mocks',
+        loglevel: "../../app/bower_components/loglevel/dist/loglevel",
+        text: "../../app/bower_components/requirejs-text/text",
+        domReady: "../../app/bower_components/requirejs-domready/domReady",
+        _: "../../app/bower_components/lodash/dist/lodash"
 
 
     },
