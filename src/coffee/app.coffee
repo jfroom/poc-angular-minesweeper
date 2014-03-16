@@ -10,7 +10,10 @@ define [ #deps
   "directives/hud"
   "enums/enums"
   "services/log"
-], (angular, MainCtrl, TileDir) ->
+  "hammer"
+  "angularHammer"
+
+], (angular) ->
   window.app = angular.module "app", [
     "app.enums"
     "app.controllers.mainCtrl"
@@ -21,6 +24,9 @@ define [ #deps
     "ngResource"
     "ngSanitize"
     "ngRoute"
+    "hmTouchEvents"
+
+
   ]
   app.config ["$routeProvider", ($routeProvider) ->
 

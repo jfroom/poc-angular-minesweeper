@@ -1,1 +1,24 @@
-<button class="btn btn-primary" ng-click="handleNewGameClick(e)">New Game</button>
+<!-- Split button -->
+<div class="btn-group btn-group-lg hud__options">
+  <button type="button" class="btn btn-primary" ng-click="handleNewGameClick(e)">New Game</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a ng-click="handleCheatClick(e)">Cheat Mode</a></li>
+    <!--
+    <li class="divider"></li>
+
+    <li><a>8 x 8</a></li>
+    <li><a>16 x 16</a></li>
+    <li><a>32 x 32</a></li>
+    <li class="divider"></li>
+    <li><a>Easy</a></li>
+    <li><a>Intermediate</a></li>
+    <li><a>Hard</a></li>
+    -->
+  </ul>
+</div>
+
+<button class="btn btn-warning btn-lg" ng-click="handleValidateClick(e)" >{{ validateLabel }}</button>

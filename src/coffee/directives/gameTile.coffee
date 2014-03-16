@@ -5,6 +5,7 @@ define ["angular", "_"], (angular, _) ->
       "app"
       "app.enums"
       "app.services.log"
+      "hmTouchEvents"
     ]
     .directive "gameTile", ["$rootScope", "enums", "log", ($rootScope, enums, $log) ->
       priority: 0
@@ -29,25 +30,28 @@ define ["angular", "_"], (angular, _) ->
             isStartOfRow: false
             distance: 10
 
-            handleClick: (e) ->
+            handleTap: (e) ->
+              # exit if game not running
+              if $rootScope.gameState != enums.StateType.Active then return
+
               if !scope.isShown
-                $log.info "click"
                 scope.isShown = true
                 if scope.hasMine
                   scope.$emit enums.EventType.TileMined
                 else
                   $rootScope.$broadcast enums.EventType.TileShown, scope
             handleSiblingTileShown: (e, data) ->
-              #$log.trace data.x
-              #if data.x != scope.x and data.y != scope.y
-              if scope.isShown or scope.hasMine or (scope.x == data.x and scope.y == data.y)
+              if data.distance > 0 or scope.isShown or scope.hasMine or (scope.x == data.x and scope.y == data.y)
                 return
               if (scope.x >= data.x - 1 and scope.x <= data.x + 1) and (scope.y >= data.y - 1 and scope.y <= data.y + 1)
                 if scope.distance >= 0
                   scope.isShown = true
                   if scope.distance == 0
                     $rootScope.$broadcast enums.EventType.TileShown, scope
-
+            handleTouchHold: (e) ->
+              # exit if game not running
+              if $rootScope.gameState != enums.StateType.Active then return
+              $log.info "hold"
 
 
           _.extend scope, scope.data
@@ -56,8 +60,8 @@ define ["angular", "_"], (angular, _) ->
           scope.$on "$destroy", () ->
             $log.info "destroy tile"
 
-
         post: postLink = (scope, iElement, iAttrs, controller) ->
+          scope.$emit enums.EventType.TileInit, scope
 
     ]
 
