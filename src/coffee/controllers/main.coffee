@@ -6,8 +6,10 @@ define ["angular", "_"], (angular, _) ->
       $log.info "mainCtrl created"
 
       _.extend $scope,
+        isGameViewReady: false # hide game view until all tiles registered
         tileArr: []
-        gridSize: 8
+        gridSize: enums.GridSize.Size8
+        difficulty: enums.DifficultyType.Easy
         numMines: 10
         state: enums.StateType.Idle
         gameResult: enums.GameResultType.InProgress
@@ -16,19 +18,21 @@ define ["angular", "_"], (angular, _) ->
         gameCSSClasses: ''
 
 
+
       class Game
         constructor: () ->
           $scope.$on enums.EventType.GameNew, angular.bind(@, @handleNewGame)
           $scope.$on enums.EventType.GameValidate, angular.bind(@, @handleValidate)
           $scope.$on enums.EventType.GameCheat, angular.bind(@, @handleCheat)
+          $scope.$on enums.EventType.GameGridChange, angular.bind(@, @handleGridChange)
+          $scope.$on enums.EventType.GameDifficultyChange, angular.bind(@, @handleDifficultyChange)
           $scope.$on enums.EventType.TileInit, angular.bind(@, @handleTileInit)
           $scope.$on enums.EventType.TileMined, angular.bind(@, @handleTileMined)
 
-          #$scope.$on enums.EventType.TileShown, angular.bind(@, handleTileShown)
+          @setGridSize($scope.gridSize)
           @handleNewGame()
           if $scope.isDebug
             @handleCheat()
-
 
         updateGameCSS: () ->
           out = ''
@@ -41,6 +45,28 @@ define ["angular", "_"], (angular, _) ->
               out += "game--lose "
           $scope.gameCSSClasses = out
 
+        handleGridChange: (e, val) ->
+          if val != $scope.gridSize
+            @setGridSize val
+            @handleNewGame()
+        setGridSize: (val) ->
+          oldGridSize = $scope.gridSize
+          $scope.gridSize = val
+          @changeNumMinesForDifficulty()
+          $body = angular.element("body")
+          prefix = "game__grid-size--"
+          $body.removeClass(prefix + oldGridSize).addClass(prefix + $scope.gridSize)
+        handleDifficultyChange: (e, val) ->
+          if val.id != $scope.difficulty.id
+            _.find enums.DifficultyType, (item) ->
+              if item.id == val
+                $scope.difficulty = item
+                return
+            @changeNumMinesForDifficulty()
+            @handleNewGame()
+
+        changeNumMinesForDifficulty: () ->
+          $scope.numMines = Math.ceil($scope.difficulty.gridToMineRatio * $scope.gridSize * $scope.gridSize)
 
         changeGameState: (state) ->
           $scope.state = state
@@ -53,8 +79,10 @@ define ["angular", "_"], (angular, _) ->
           @updateGameCSS()
 
         handleNewGame: () ->
+          $scope.isGameViewReady = false #hide view while rendering
           $scope.tileArr = []
           $scope.outcome = enums.GameResultType.InProgress
+          tmpArr = []
 
           #create board
           _.each _.range(0, ($scope.gridSize * $scope.gridSize)), (el, index) ->
@@ -63,32 +91,33 @@ define ["angular", "_"], (angular, _) ->
             config = {x:x, y:y}
             if x == 0 and y > 0
               config.isStartOfRow = true
-            $scope.tileArr.push config
+            tmpArr.push config
 
           #assign mines
-          pluckArr = _.clone $scope.tileArr
+          pluckArr = _.clone tmpArr
           _.each _.range(1, $scope.numMines), (el, index) ->
             mineTile = (_.at pluckArr, Math.floor(Math.random() * pluckArr.length))[0]
             mineTile.hasMine = true
 
           # assign distances
-          _.each $scope.tileArr, (config, index) ->
+          _.each tmpArr, (config, index) ->
             if !config.hasMine
               dist = 0
-              dist += @getTileDistAt config.x + -1, config.y + -1
-              dist += @getTileDistAt config.x + 0, config.y + -1
-              dist += @getTileDistAt config.x + 1, config.y + -1
+              dist += @getTileDistAt config.x + -1, config.y + -1, tmpArr
+              dist += @getTileDistAt config.x + 0, config.y + -1, tmpArr
+              dist += @getTileDistAt config.x + 1, config.y + -1, tmpArr
 
-              dist += @getTileDistAt config.x + -1, config.y + 0
-              dist += @getTileDistAt config.x + 1, config.y + 0
+              dist += @getTileDistAt config.x + -1, config.y + 0, tmpArr
+              dist += @getTileDistAt config.x + 1, config.y + 0, tmpArr
 
-              dist += @getTileDistAt config.x + -1, config.y + 1
-              dist += @getTileDistAt config.x + 0, config.y + 1
-              dist += @getTileDistAt config.x + 1, config.y + 1
+              dist += @getTileDistAt config.x + -1, config.y + 1, tmpArr
+              dist += @getTileDistAt config.x + 0, config.y + 1, tmpArr
+              dist += @getTileDistAt config.x + 1, config.y + 1, tmpArr
               config.distance = dist
           , @
 
           $scope.gameResult = enums.GameResultType.InProgress
+          $scope.tileArr = tmpArr # render
           @changeGameState enums.StateType.Active
 
         handleCheat: (e) ->
@@ -98,14 +127,11 @@ define ["angular", "_"], (angular, _) ->
         handleTileInit: (e, tile) ->
           i =  @getTileIndex tile.x, tile.y
           $scope.tileArr[i] = tile
-        handleTileShown: (e, data) ->
-          tile = @getTileAt data.x - 1, data.y - 1
-          tile?.handleSiblingShown()
-          @getTileAt data.x
-        handleValidate: (e) ->
-          $log.info "validate in main"
-          isWinner = true
+          if $scope.tileArr.length == $scope.gridSize * $scope.gridSize
+              $scope.isGameViewReady = true
 
+        handleValidate: (e) ->
+          isWinner = true
           _.each $scope.tileArr, (tile, index) ->
             $log.info "x:" + tile.x + " y:" + tile.y
             if !tile.isShown and !tile.hasMine
@@ -118,22 +144,23 @@ define ["angular", "_"], (angular, _) ->
           $log.info "$scope.gameResult: " + $scope.gameResult
           @changeGameState enums.StateType.Complete
 
-
         handleTileMined: (e) ->
           $scope.gameResult = enums.GameResultType.Lose
           @changeGameState enums.StateType.Complete
 
 
-        # utils
-        getTileDistAt: (x, y) ->
+        #--------------------------------------------------------------------
+        # UTILS
+
+        getTileDistAt: (x, y, tileArr = $scope.tileArr) ->
           if x < 0 || x >= $scope.gridSize || y < 0 || y >= $scope.gridSize
             return 0
-          tile = @getTileAt x, y
+          tile = @getTileAt x, y, tileArr
           hasMine = tile.hasMine
           if hasMine then return 1 else return 0
-        getTileAt: (x, y) ->
+        getTileAt: (x, y, tileArr = $scope.tileArr) ->
           i = @getTileIndex(x,y)
-          $scope.tileArr[ i ]
+          tileArr[ i ]
         getTileIndex: (x, y) ->
           x + y * $scope.gridSize
 

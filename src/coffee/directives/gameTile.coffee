@@ -1,4 +1,4 @@
-define ["angular", "_"], (angular, _) ->
+define ["angular", "_", "hammer"], (angular, _, Hammer) ->
 
   angular
     .module 'app.directives.gameTile', [
@@ -29,7 +29,9 @@ define ["angular", "_"], (angular, _) ->
             isShown: false
             isStartOfRow: false
             distance: 10
-
+            handleClick: (e) ->
+              # intentionally empty to suppress event side effects
+              # tap will handle it - has better mobile support
             handleTap: (e) ->
               # exit if game not running
               if $rootScope.gameState != enums.StateType.Active then return
@@ -53,12 +55,11 @@ define ["angular", "_"], (angular, _) ->
               if $rootScope.gameState != enums.StateType.Active then return
               $log.info "hold"
 
-
           _.extend scope, scope.data
           scope.$on enums.EventType.TileShown, angular.bind(scope, scope.handleSiblingTileShown)
 
           scope.$on "$destroy", () ->
-            $log.info "destroy tile"
+            #$log.info "destroy tile"
 
         post: postLink = (scope, iElement, iAttrs, controller) ->
           scope.$emit enums.EventType.TileInit, scope

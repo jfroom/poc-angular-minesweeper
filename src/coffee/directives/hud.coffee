@@ -4,7 +4,8 @@ define ["angular", "_"], (angular, _) ->
     .module 'app.directives.hud', [
       "app"
       "app.enums"
-      "app.services.log"
+      "app.services.log",
+      "hmTouchEvents"
 
     ]
     .directive "hud", ["$rootScope", "enums", "log", ($rootScope, enums, $log) ->
@@ -24,8 +25,6 @@ define ["angular", "_"], (angular, _) ->
             handleNewGameClick: (e) ->
               console.log "click game"
               scope.$emit enums.EventType.GameNew
-            handleTouchHold: (e) ->
-              console.log "touch hold"
             handleValidateClick: (e) ->
               scope.$emit enums.EventType.GameValidate
             handleGameStart: (e) ->
@@ -37,7 +36,12 @@ define ["angular", "_"], (angular, _) ->
             handleCheatClick: (e) ->
               $log.info 'cheatclick'
               scope.$emit enums.EventType.GameCheat
-
+            handleGridChange: (val) ->
+              $log.info 'handleGridChange ' + val
+              scope.$emit enums.EventType.GameGridChange, val
+            handleDifficultyChange: (val) ->
+              $log.info 'handleChangeDifficulty ' + val
+              scope.$emit enums.EventType.GameDifficultyChange, val
 
           scope.$on enums.EventType.GameOver, angular.bind(scope, scope.handleGameOver)
           scope.$on enums.EventType.GameStart, angular.bind(scope, scope.handleGameStart)
