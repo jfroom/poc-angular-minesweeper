@@ -4,7 +4,7 @@
 This repository contains a proof-of-concept front-end project for the classic minesweeper game. 
 
 ### Video Walkthrough
-<a href="]http://www.youtube.com/watch?v=mqRxdwIBtog"><img src="http://img.youtube.com/vi/mqRxdwIBtog/hqdefault.jpg" width="480" height="360"/></a>
+<a href="http://www.youtube.com/watch?v=mqRxdwIBtog"><img src="http://img.youtube.com/vi/mqRxdwIBtog/hqdefault.jpg" width="480" height="360"/></a>
 
 ###Technologies applied
 - [AngularJS][^angular]
