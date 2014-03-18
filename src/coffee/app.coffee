@@ -1,7 +1,7 @@
 define [ #deps
 #invoke
   "angular"
-  "angularCookies"
+  #"text!views/main.html"
   "angularSanitize"
   "angularResource"
   "angularRoute"
@@ -10,8 +10,11 @@ define [ #deps
   "directives/hud"
   "enums/enums"
   "services/log"
-  "hammer"
-  "angularHammer"
+  #"hammer"
+  #"angularHammer"
+
+
+
 
 ], (angular) ->
   window.app = angular.module "app", [
@@ -20,18 +23,16 @@ define [ #deps
     "app.directives.gameTile"
     "app.directives.hud"
     "app.services.log"
-    #"ngCookies"
     "ngResource"
     "ngSanitize"
     "ngRoute"
-    "hmTouchEvents"
-
-
+    #"hmTouchEvents"
   ]
   app.config ["$routeProvider", ($routeProvider) ->
 
     $routeProvider.when("/",
       templateUrl: "views/main.html"
+      #template: tmpl
       controller: "mainCtrl"
     ).otherwise redirectTo: "/"
   ]
