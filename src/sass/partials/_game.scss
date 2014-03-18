@@ -120,18 +120,21 @@ section[role="board"]{
 body {
   &.game__grid-size--8 {
     min-width: $game-grid-width * 8 + 40;
+    min-height:500px;
     section[role="main"] {
       min-width: $game-grid-width * 8 + 40;
     }
   }
   &.game__grid-size--16 {
     min-width: $game-grid-width * 16 + 40;
+    min-height:800px;
     section[role="main"] {
       min-width: $game-grid-width * 16 + 40;
     }
   }
   &.game__grid-size--24 {
     min-width: $game-grid-width * 24 + 40;
+    min-height:1200px;
     section[role="main"] {
       min-width: $game-grid-width * 24 + 40;
     }
