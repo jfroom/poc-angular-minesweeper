@@ -9,7 +9,6 @@
     "jquery": "~1.11.0",
     "sass-bootstrap": "~3.0.2",
     "angular-resource": "1.2.11",
-    "angular-cookies": "1.2.11",
     "angular-sanitize": "1.2.11",
     "angular-route": "1.2.11"
   },
@@ -21,10 +20,9 @@
     "requirejs-domready": "~2.0.1",
     "requirejs-text": "~2.0.10",
     "lodash": "~2.4.1",
-    "log4javascript": "~1.4.6",
-    "loglevel": "~0.5.0",
     "angular-hammer": "~1.0.3",
     "hammerjs": "~1.0.8",
-    "angular-gesture": "~1.4.2"
+    "angular-cookies": "~1.2.14",
+    "woodman": "~1.1.0"
   }
 }
