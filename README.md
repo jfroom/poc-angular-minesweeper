@@ -36,7 +36,7 @@ _If you haven't used [Node][^node] or [NPM][^npm] before, be sure to check out t
 
 _If you haven't used [grunt][^grunt] before, be sure to check out the [Getting Started][^gruntstart] guide._
 
-_If you haven't used [bower][^bower] before, be sure to [install][^bowerstart] it.
+_If you haven't used [bower][^bower] before, be sure to [install][^bowerstart] it._
 
 [^node]: http://nodejs.org
 [^npm]: https://npmjs.org/
