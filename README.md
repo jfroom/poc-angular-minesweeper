@@ -4,17 +4,18 @@
 This repository contains a proof-of-concept front-end project for the classic minesweeper game. 
 
 ###Technologies applied
+- [AngularJS][^angular]
+- [Require][^require]
 - [GruntJS][^grunt]
 - [Yeoman][^yeoman]
 - [Angular Generator][^angulargenerator]
-- [AngularJS][^angular]
-- [Require][^require]
 - [Bootstrap][^bootstrap]
 - [SASS][^sass]
 - [Coffeescript][^coffeescript]
 - [Bower][^bower]
 - [Travis][^travis]
 
+[^angular]: http://angularjs.org/
 [^angulargenerator]: https://github.com/yeoman/generator-angular
 [^require]: http://requirejs.org/
 [^yeoman]: http://yeoman.io/
@@ -35,9 +36,13 @@ _If you haven't used [Node][^node] or [NPM][^npm] before, be sure to check out t
 
 _If you haven't used [grunt][^grunt] before, be sure to check out the [Getting Started][^gruntstart] guide._
 
+_If you haven't used [bower][^bower] before, be sure to [install][^bowerstart] it.
+
 [^node]: http://nodejs.org
 [^npm]: https://npmjs.org/
 [^gruntstart]: http://gruntjs.com/
+[^bower]: http://bower.io
+[^bowerstart]: http://bower.io/#installing-bower
 
 ###Dependencies
 
