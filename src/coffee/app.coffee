@@ -1,5 +1,4 @@
-define [ #deps
-#invoke
+define [
   "angular"
   "text!template_main"
   "angularSanitize"
@@ -10,11 +9,6 @@ define [ #deps
   "directives/hud"
   "enums/enums"
   "services/log"
-  #"hammer"
-  #"angularHammer"
-
-
-
 
 ], (angular, tmpl) ->
   window.app = angular.module "app", [
@@ -26,12 +20,10 @@ define [ #deps
     "ngResource"
     "ngSanitize"
     "ngRoute"
-    #"hmTouchEvents"
   ]
   app.config ["$routeProvider", ($routeProvider) ->
 
     $routeProvider.when("/",
-      #templateUrl: "views/main.html"
       template: tmpl
       controller: "mainCtrl"
     ).otherwise redirectTo: "/"

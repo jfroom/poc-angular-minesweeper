@@ -18,7 +18,6 @@ define ["angular", "_"], (angular, _) ->
         gameCSSClasses: ''
 
 
-
       class Game
         constructor: () ->
           $scope.$on enums.EventType.GameNew, angular.bind(@, @handleNewGame)

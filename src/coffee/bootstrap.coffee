@@ -14,7 +14,6 @@ require.config
     "_": "../bower_components/lodash/dist/lodash"
     hammer: "../bower_components/hammerjs/hammer"
     angularHammer: "vendor/angular-hammer-require"
-    #views: "../views"
     jquery: "../bower_components/jquery/dist/jquery"
     woodman: "../bower_components/woodman/dist/woodman-amd"
     templates: "../views"
@@ -58,18 +57,13 @@ require [
   "angularResource"
   "text"
   "domReady"
-  #"jsnlog"
   "hammer"
   "angularHammer"
   "bootstrapDropdown"
   "_"
   "woodman"
-
-#], (jQuery, angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, text, domReady, hammer, dropdown, _, jsnlog) ->
 ], (jQuery, angular, app, ngRoutes, ngCookies, ngSanitize, ngResource, text, domReady, Hammer, ngTouchEvents, dropdown, _, woodman) ->
-  #require ["app"], (app) ->
-  console.log "bootstrap running..."
-  $html = angular.element(document.getElementsByTagName("html")[0])
+  #$html = angular.element(document.getElementsByTagName("html")[0])
   angular.element().ready ->
     angular.resumeBootstrap [app.name]
 

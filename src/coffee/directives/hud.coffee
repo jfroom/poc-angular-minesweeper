@@ -14,7 +14,6 @@ define ["angular", "_", "text!template_hud"], (angular, _, tmpl) ->
       replace: false
       transclude: false
       restrict: "A"
-      #templateUrl: "views/hud.html"
       template: tmpl
       scope: true
 
@@ -24,7 +23,6 @@ define ["angular", "_", "text!template_hud"], (angular, _, tmpl) ->
           _.extend scope,
             validateLabel: "Validate"
             handleNewGameClick: (e) ->
-              console.log "click game"
               scope.$emit enums.EventType.GameNew
             handleValidateClick: (e) ->
               scope.$emit enums.EventType.GameValidate
