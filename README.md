@@ -28,6 +28,9 @@ This repository contains a proof-of-concept front-end project for the classic mi
 [^sauce]: https://saucelabs.com/
 [^travis]: https://travis-ci.org/
 
+## Video Walkthrough
+<iframe width="420" height="315" src="//www.youtube.com/embed/mqRxdwIBtog?rel=0" frameborder="0" allowfullscreen></iframe>
+
 ## Getting Started
 
 This website requires Node/NPM `~0.10.15`, and Grunt `~0.4.1`
