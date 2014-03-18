@@ -489,7 +489,7 @@ module.exports = (grunt) ->
     return
 
   grunt.registerTask "test", [
-    "clean:server"
+    "clean"
     "concurrent:test"
     #"autoprefixer"
     "coffee:dist"
