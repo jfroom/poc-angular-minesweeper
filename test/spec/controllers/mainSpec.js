@@ -1,5 +1,5 @@
 /*jshint unused: vars */
-define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
+define(['angular', 'angularMocks', 'app', '_', "angularHammer", "jquery"], function(angular, mocks, app, _, angularHammer, jQuery) {
   'use strict';
 
   describe('Controller: MainCtrl', function () {
@@ -20,7 +20,7 @@ define(['angular', 'angularMocks', 'app'], function(angular, mocks, app) {
       console.log("MainCtrl:" + MainCtrl)
     }));
 
-    it('should attach a list of awesomeThings to the scope', function () {
+    it('should expect MainCtrl to be defined', function () {
       expect(MainCtrl).toBeDefined();
     });
   });

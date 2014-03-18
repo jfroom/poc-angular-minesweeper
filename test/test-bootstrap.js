@@ -19,16 +19,29 @@ requirejs.config({
         angularSanitize: '../../app/bower_components/angular-sanitize/angular-sanitize',
         angularResource: '../../app/bower_components/angular-resource/angular-resource',
         angularMocks: '../../app/bower_components/angular-mocks/angular-mocks',
-        loglevel: "../../app/bower_components/loglevel/dist/loglevel",
+
         text: "../../app/bower_components/requirejs-text/text",
         domReady: "../../app/bower_components/requirejs-domready/domReady",
-        _: "../../app/bower_components/lodash/dist/lodash"
+        _: "../../app/bower_components/lodash/dist/lodash",
+        bootstrapDropdown: "../../app/bower_components/sass-bootstrap/js/dropdown",
+        hammer: "../../app/bower_components/hammerjs/hammer",
+        angularHammer: "vendor/angular-hammer-require",
+        views: "../../app/views",
+        jquery: "../../app/bower_components/jquery/dist/jquery",
+        woodman: "../../app/bower_components/woodman/dist/woodman-amd"
+
 
 
     },
 
     shim: {
-        'angular' : {'exports' : 'angular'},
+        'angular' : {
+          deps: ['jquery'],
+          'exports' : 'angular'
+        },
+        'hammer': {'exports' : 'Hammer'},
+        'bootstrapDropdown': {'deps' : 'jquery'},
+        'jquery': {'exports' : 'jQuery'},
         'angularRoute': ['angular'],
         'angularCookies': ['angular'],
         'angularSanitize': ['angular'],
