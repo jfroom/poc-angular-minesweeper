@@ -3,6 +3,9 @@
 ##Overview
 This repository contains a proof-of-concept front-end project for the classic minesweeper game. 
 
+### Video Walkthrough
+[![Watch Video](http://img.youtube.com/vi/mqRxdwIBtog/0.jpg =480x360)](http://www.youtube.com/watch?v=mqRxdwIBtog)
+
 ###Technologies applied
 - [AngularJS][^angular]
 - [Require][^require]
@@ -28,8 +31,7 @@ This repository contains a proof-of-concept front-end project for the classic mi
 [^sauce]: https://saucelabs.com/
 [^travis]: https://travis-ci.org/
 
-## Video Walkthrough
-[![Watch Video](http://img.youtube.com/vi/mqRxdwIBtog/0.jpg)](http://www.youtube.com/watch?v=mqRxdwIBtog)
+
 
 ## Getting Started
 
