@@ -1,5 +1,5 @@
 
-<div hm-tap="handleTap(e)" hm-hold="handleTouchHold(e)">
+<a hm-tap="handleTap(e)" ng-click="handleClick(e)" href="" class="tile__item--wrap">
   <div class="tile__item--content">
     <div class="tile__item--mine" ng-show="hasMine">
       <i class="fa fa-cog"></i>
@@ -9,4 +9,5 @@
   <div class="tile__item--cover" ng-show="!isShown">
     <div class="tile__item--marker" ng-hide></div>
   </div>
-</div>
+</a>
+
