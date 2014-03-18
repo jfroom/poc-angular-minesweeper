@@ -47,6 +47,7 @@ module.exports = function(config) {
       {pattern: '.tmp-dist/scripts/vendor/*.js', included: false },
       {pattern: '.tmp-dist/scripts/*.js', included: false },
       {pattern: '.tmp-dist/scripts/**/*.js', included: false },
+      {pattern: 'app/views/*.html', included: false },
 
       {pattern: 'test/spec/**/*.js', included: false },
       // http://karma-runner.github.io/0.10/plus/requirejs.html

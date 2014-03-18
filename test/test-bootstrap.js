@@ -28,9 +28,11 @@ requirejs.config({
         angularHammer: "vendor/angular-hammer-require",
         views: "../../app/views",
         jquery: "../../app/bower_components/jquery/dist/jquery",
-        woodman: "../../app/bower_components/woodman/dist/woodman-amd"
+        woodman: "../../app/bower_components/woodman/dist/woodman-amd",
 
-
+        template_main: "../../app/views/main.html",
+        template_gameTile: "../../app/views/gameTile.html",
+        template_hud: "../../app/views/hud.html"
 
     },
 

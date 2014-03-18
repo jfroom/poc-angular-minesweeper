@@ -284,7 +284,7 @@ module.exports = (grunt) ->
           cwd: "<%= yeoman.dist %>"
           src: [
             "*.html"
-            "views/{,*/}*.html"
+            #"views/{,*/}*.html"
           ]
           dest: "<%= yeoman.dist %>"
         ]

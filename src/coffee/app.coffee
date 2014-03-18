@@ -1,7 +1,7 @@
 define [ #deps
 #invoke
   "angular"
-  #"text!views/main.html"
+  "text!template_main"
   "angularSanitize"
   "angularResource"
   "angularRoute"
@@ -16,7 +16,7 @@ define [ #deps
 
 
 
-], (angular) ->
+], (angular, tmpl) ->
   window.app = angular.module "app", [
     "app.enums"
     "app.controllers.mainCtrl"
@@ -31,8 +31,8 @@ define [ #deps
   app.config ["$routeProvider", ($routeProvider) ->
 
     $routeProvider.when("/",
-      templateUrl: "views/main.html"
-      #template: tmpl
+      #templateUrl: "views/main.html"
+      template: tmpl
       controller: "mainCtrl"
     ).otherwise redirectTo: "/"
   ]

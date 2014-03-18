@@ -17,6 +17,11 @@ require.config
     #views: "../views"
     jquery: "../bower_components/jquery/dist/jquery"
     woodman: "../bower_components/woodman/dist/woodman-amd"
+    templates: "../views"
+
+    template_main: "../views/main.html"
+    template_gameTile: "../views/gameTile.html"
+    template_hud: "../views/hud.html"
 
 
   shim:

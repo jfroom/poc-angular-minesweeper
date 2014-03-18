@@ -1,4 +1,4 @@
-define ["angular", "_", "hammer"], (angular, _, Hammer) ->
+define ["angular", "_", "hammer", "text!template_gameTile"], (angular, _, Hammer, tmpl) ->
 
   angular
     .module 'app.directives.gameTile', [
@@ -13,7 +13,8 @@ define ["angular", "_", "hammer"], (angular, _, Hammer) ->
       replace: false
       transclude: false
       restrict: "A"
-      templateUrl: "views/gameTile.html"
+      #templateUrl: "views/gameTile.html"
+      template: tmpl
 
       scope:
         data: '=gameTile'

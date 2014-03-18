@@ -1,4 +1,4 @@
-define ["angular", "_"], (angular, _) ->
+define ["angular", "_", "text!template_hud"], (angular, _, tmpl) ->
 
   angular
     .module 'app.directives.hud', [
@@ -14,7 +14,8 @@ define ["angular", "_"], (angular, _) ->
       replace: false
       transclude: false
       restrict: "A"
-      templateUrl: "views/hud.html"
+      #templateUrl: "views/hud.html"
+      template: tmpl
       scope: true
 
       compile: compile = (tElement, tAttrs, transclude) ->
