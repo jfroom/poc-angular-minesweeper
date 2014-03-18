@@ -1,10 +1,13 @@
-define ["angular", "_", "loglevel"], (angular, _, loglevel) ->
+#define ["angular", "_", "jsnlog"], (angular, _, JL) ->
+define ["angular", "_", "woodman"], (angular, _, woodman) ->
 
   angular
     .module "app.services.log", []
     .factory "log", ["$rootScope", ($rootScope) ->
-      logger = loglevel
+      woodman.load("console")
+      logger = woodman.getLogger("app")
       $rootScope.logger = logger
-      logger.setLevel "trace"
+      #$rootScope.logger.setLevel "trace"
+
       return logger
     ]
