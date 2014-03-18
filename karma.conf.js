@@ -29,12 +29,22 @@ module.exports = function(config) {
     files: [
       {pattern: 'app/bower_components/angular/angular.js', included: false },
       {pattern: 'app/bower_components/angular-mocks/angular-mocks.js', included: false },
-      {pattern: 'app/bower_components/angular-resource/angular-resource.js', included: false },
+
+      {pattern: 'app/bower_components/angular-route/angular-route.js', included: false },
       {pattern: 'app/bower_components/angular-cookies/angular-cookies.js', included: false },
       {pattern: 'app/bower_components/angular-sanitize/angular-sanitize.js', included: false },
-      {pattern: 'app/bower_components/angular-route/angular-route.js', included: false },
+      {pattern: 'app/bower_components/angular-resource/angular-resource.js', included: false },
+
+      {pattern: 'app/bower_components/requirejs-text/text.js', included: false },
+      {pattern: 'app/bower_components/requirejs-domready/domReady.js', included: false },
+      {pattern: 'app/bower_components/sass-bootstrap/js/dropdown.js', included: false },
       {pattern: 'app/bower_components/lodash/dist/lodash.js', included: false },
-      {pattern: 'app/bower_components/loglevel/dist/loglevel.js', included: false },
+      {pattern: 'app/bower_components/hammerjs/hammer.js', included: false },
+
+      {pattern: 'app/bower_components/jquery/dist/jquery.js', included: false },
+      {pattern: 'app/bower_components/woodman/dist/woodman-amd.js', included: false },
+
+      {pattern: '.tmp-dist/scripts/vendor/*.js', included: false },
       {pattern: '.tmp-dist/scripts/*.js', included: false },
       {pattern: '.tmp-dist/scripts/**/*.js', included: false },
 
@@ -68,7 +78,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeCanary'], //['PhantomJS'],
 
 
     // Continuous Integration mode
