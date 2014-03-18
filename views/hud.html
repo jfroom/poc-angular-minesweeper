@@ -1,0 +1,23 @@
+<!-- Split button -->
+<div class="btn-group btn-group-lg hud__options">
+  <button type="button" class="btn btn-primary" ng-click="handleNewGameClick(e)">New Game</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a ng-click="handleCheatClick(e)">Cheat Mode <i ng-show="isCheatMode" class="fa fa-check"></i></a></li>
+
+    <li class="divider"></li>
+    <li><a ng-click="handleGridChange(8)">8 x 8 <i ng-show="gridSize == 8"  class="fa fa-check"></i></a></li>
+    <li><a ng-click="handleGridChange(16)">16 x 16 <i ng-show="gridSize == 16" class="fa fa-check"></i></a></li>
+    <li><a ng-click="handleGridChange(24)">24 x 24 <i ng-show="gridSize == 24" class="fa fa-check"></i></a></li>
+    <li class="divider"></li>
+    <li><a ng-click="handleDifficultyChange('easy')">Easy <i ng-show="difficulty.id == 'easy'" class="fa fa-check"></i></a></li>
+    <li><a ng-click="handleDifficultyChange('medium')">Medium <i ng-show="difficulty.id == 'medium'" class="fa fa-check"></i></a></li>
+    <li><a ng-click="handleDifficultyChange('hard')">Hard <i ng-show="difficulty.id == 'hard'" class="fa fa-check"></i></a></li>
+
+  </ul>
+</div>
+
+<button class="btn btn-warning btn-lg" ng-click="handleValidateClick(e)" >{{ validateLabel }}</button>
