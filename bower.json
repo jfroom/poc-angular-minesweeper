@@ -2,7 +2,7 @@
   "name": "poc-angular-minesweeper",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.2.11",
+    "angular": "1.2.14",
     "json3": "~3.2.6",
     "requirejs": "~2.1.10",
     "es5-shim": "~2.1.0",
@@ -23,6 +23,7 @@
     "angular-hammer": "~1.0.3",
     "hammerjs": "~1.0.8",
     "angular-cookies": "~1.2.14",
-    "woodman": "~1.1.0"
+    "woodman": "~1.1.0",
+    "angular": "~1.2.14"
   }
 }
