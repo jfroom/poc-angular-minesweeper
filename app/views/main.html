@@ -1,11 +1,11 @@
 
-<section role="game" ng-class="gameCSSClasses">
+<section role="game" ng-class="gameCSSClasses" ng-show="isGameViewReady">
 
   <section role="hud">
     <div hud></div>
   </section>
   <section role="board">
-    <ul class="tile__grid" ng-class="tileGridCSSClasses">
+    <ul class="tile__grid">
       <li ng-repeat="tile in tileArr" game-tile="tile" class="tile__item" ng-class="{true:'tile__item--rowstart'}[tile.isStartOfRow]"></li>
     </ul>
   </section>
