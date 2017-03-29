@@ -1,12 +1,9 @@
 # poc-angular-minesweeper [![Build Status](https://travis-ci.org/jfroom/poc-angular-minesweeper.png)](https://travis-ci.org/jfroom/poc-angular-minesweeper) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-##Overview
-This repository contains a proof-of-concept front-end project for the classic minesweeper game. 
+## Overview
+This repository contains a proof-of-concept front-end project for the classic minesweeper game. Functinal, but WIP (lacks real tests, or usage docs).
 
-### Video Walkthrough
-<a href="http://www.youtube.com/watch?v=mqRxdwIBtog"><img src="http://img.youtube.com/vi/mqRxdwIBtog/hqdefault.jpg" width="480" height="360"/></a>
-
-###Technologies applied
+### Technologies applied
 - [AngularJS][^angular]
 - [Require][^require]
 - [GruntJS][^grunt]
@@ -32,7 +29,6 @@ This repository contains a proof-of-concept front-end project for the classic mi
 [^travis]: https://travis-ci.org/
 
 
-
 ## Getting Started
 
 This website requires Node/NPM `~0.10.15`, and Grunt `~0.4.1`
@@ -49,7 +45,7 @@ _If you haven't used [bower][^bower] before, be sure to [install][^bowerstart] i
 [^bower]: http://bower.io
 [^bowerstart]: http://bower.io/#installing-bower
 
-###Dependencies
+### Dependencies
 
 To install all node based dependencies, run:
 ```
@@ -57,6 +53,5 @@ npm install
 bower install
 ```
 
-##License
-Copyright (c) 2014 JFMK, LLC. Released under [MIT License][^license].
-[^license]: https://github.com/jfroom/poc-fed-contact/blob/master/LICENSE
+## License
+Copyright (c) 2014 JFMK, LLC. Released under [MIT License](https://github.com/jfroom/poc-fed-contact/blob/master/LICENSE).
